@@ -90,7 +90,20 @@ def accuracy(typed, source):
     typed_words = split(typed)
     source_words = split(source)
     # BEGIN PROBLEM 3
-    "*** YOUR CODE HERE ***"
+    if not typed and not source:
+        return 100.0
+    elif not typed or not source:
+        return 0.0
+    else:
+        typed_list, source_list = split(typed), split(source)
+        typed_len, source_len = len(typed_list), len(source_list)
+        index = 0
+        match_num = 0
+        while index < typed_len and index < source_len:
+            if typed_list[index] == source_list[index]:
+                match_num += 1
+            index += 1
+        return match_num / typed_len * 100
     # END PROBLEM 3
 
 
