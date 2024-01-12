@@ -292,11 +292,11 @@ def hailstone_tree(n, h):
         5
           10
     """
-    if _________________________________:
-        return _________________________________
-    branches = _________________________________
-    if ___________ and ___________ and ___________:
-        branches += _________________________________
+    if h == 0:
+        return tree(n)
+    branches = [hailstone_tree(n * 2, h - 1)]
+    if (n - 1) % 3 == 0 and ((n - 1) // 3) % 2 == 1 and (n - 1) // 3 > 1:
+        branches += [hailstone_tree((n - 1) // 3, h - 1)]
     return tree(n, branches)
 
 
