@@ -276,7 +276,14 @@ def report_progress(typed, source, user_id, upload):
     0.2
     """
     # BEGIN PROBLEM 8
-    "*** YOUR CODE HERE ***"
+    index, correct_num = 0, 0
+    len_typed, len_source = len(typed), len(source)
+    while index < len_typed and typed[index] == source[index]:
+        index += 1
+        correct_num += 1
+    ratio = correct_num / len_source
+    upload({'id': user_id, 'progress': ratio})
+    return ratio
     # END PROBLEM 8
 
 
