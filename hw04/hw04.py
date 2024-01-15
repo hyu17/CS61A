@@ -32,8 +32,11 @@ def deep_map_mut(func, lst):
     >>> s3 is s2[1]
     True
     """
-    "*** YOUR CODE HERE ***"
-
+    for index in range(len(lst)):
+        if type(lst[index]) == list:
+            deep_map_mut(func, lst[index])
+        else:
+            lst[index] = func(lst[index])
 
 HW_SOURCE_FILE=__file__
 
