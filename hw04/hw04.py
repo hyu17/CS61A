@@ -93,7 +93,15 @@ def has_path(t, word):
     False
     """
     assert len(word) > 0, 'no path for empty word.'
-    "*** YOUR CODE HERE ***"
+    if label(t) != word[0]:
+        return False
+    elif len(word) == 1:
+        return True
+    else:
+        for branch in branches(t):
+            if has_path(branch, word[1:]):
+                return True
+        return False
 
 
 
