@@ -57,7 +57,12 @@ def count_occurrences(t, n, x):
     >>> count_occurrences(s2, 6, 6)
     2
     """
-    "*** YOUR CODE HERE ***"
+    count = 0
+    while n > 0:
+        if next(t) == x:
+            count += 1
+        n -= 1
+    return count
 
 
 def repeated(t, k):
