@@ -85,8 +85,17 @@ def repeated(t, k):
     2
     """
     assert k > 1
-    "*** YOUR CODE HERE ***"
-
+    last_item, repeated_times = None, 1
+    while True:
+        item = next(t)
+        if item == last_item:
+            repeated_times += 1
+            if repeated_times == k:
+                return item
+        else:
+            repeated_times = 1
+            last_item = item
+            
 
 def partial_reverse(s, start):
     """Reverse part of a list in-place, starting with start up to the end of
