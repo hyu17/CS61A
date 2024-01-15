@@ -5,8 +5,8 @@ def filter(condition, lst):
     >>> original_list
     [2, 0]
     """
-    "*** YOUR CODE HERE ***"
-
+    filetered_list = [elem for elem in lst if condition(elem)]
+    lst[:] = filetered_list
 
 def deep_map_mut(func, lst):
     """Deeply maps a function over a list, replacing each item
