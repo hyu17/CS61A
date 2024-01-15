@@ -50,7 +50,13 @@ def max_path_sum(t):
     >>> max_path_sum(t2) # 5, 2, 10
     17
     """
-    "*** YOUR CODE HERE ***"
+    if is_leaf(t):
+        return label(t)
+    else:
+        path_sum = 0
+        for branch in branches(t):
+            path_sum = max(max_path_sum(branch), path_sum)
+        return path_sum + label(t)
 
 
 HW_SOURCE_FILE=__file__
