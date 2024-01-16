@@ -109,5 +109,5 @@ def partial_reverse(s, start):
     >>> a
     [1, 2, 7, 6, 5, 3, 4]
     """
-    "*** YOUR CODE HERE ***"
+    s[start:] = reversed(s[start:])
 
