@@ -29,7 +29,17 @@ def merge(a, b):
     >>> [next(result) for _ in range(10)]
     [2, 3, 5, 7, 8, 9, 11, 13, 14, 15]
     """
-    "*** YOUR CODE HERE ***"
+    first_a, first_b = next(a), next(b)
+    while True:
+        if first_a == first_b:
+            yield first_a
+            first_a, first_b = next(a), next(b)
+        elif first_a < first_b:
+            yield first_a
+            first_a = next(a)
+        else:
+            yield first_b
+            first_b = next(b)
 
 
 def perms(seq):
