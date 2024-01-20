@@ -64,7 +64,12 @@ def perms(seq):
     >>> sorted(perms("ab"))
     [['a', 'b'], ['b', 'a']]
     """
-    "*** YOUR CODE HERE ***"
+    if not seq:
+        yield []
+    else:
+        for permutation in perms(seq[:len(seq) - 1]):
+            for i in range(len(seq)):
+                yield permutation[:i] + [seq[len(seq) - 1]] + permutation[i:]
 
 
 def yield_paths(t, value):
