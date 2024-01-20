@@ -145,7 +145,12 @@ def remainders_generator(m):
     7
     11
     """
-    "*** YOUR CODE HERE ***"
+    def gen(i):
+        for num in naturals():
+            if num % m == i:
+                yield num
+    for i in range(m):
+        yield gen(i)
 
 
 
