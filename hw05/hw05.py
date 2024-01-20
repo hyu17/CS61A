@@ -106,11 +106,12 @@ def yield_paths(t, value):
     >>> sorted(list(path_to_2))
     [[0, 2], [0, 2, 1, 2]]
     """
-    "*** YOUR CODE HERE ***"
+    if label(t) == value:
+        yield [label(t)]
     
-    for _______________ in _________________:
-        for _______________ in _________________:
-            "*** YOUR CODE HERE ***"
+    for branch in branches(t):
+        for path in yield_paths(branch, value):
+            yield [label(t)] + path
 
 
 def remainders_generator(m):
