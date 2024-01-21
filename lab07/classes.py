@@ -242,8 +242,12 @@ class TACard(Card):
         >>> print(test_card.attack, test_card.defense)
         600 500
         """
-        "*** YOUR CODE HERE ***"
         best_card = None
+        if len(player.hand):
+            best_card = max(player.hand, key=lambda card: card.power(opponent_card))
+            self.attack += best_card.attack
+            self.defense += best_card.defense
+            player.hand.remove(best_card)
         # You should add your implementation above this.
         if best_card:
             print(f"{self.name} discards {best_card.name} from my hand to increase its own power!")
