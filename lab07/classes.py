@@ -157,8 +157,9 @@ class AICard(Card):
         >>> initial_deck_length == len(player1.deck.cards) + 2
         True
         """
-        "*** YOUR CODE HERE ***"
-        implemented = False
+        for _ in range(2):
+            player.draw()
+        implemented = True
         # You should add your implementation above this.
         if implemented:
             print(f"{self.name} allows me to draw two cards!")
