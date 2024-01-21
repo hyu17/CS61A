@@ -285,8 +285,12 @@ class InstructorCard(Card):
         >>> print(test_card.attack, test_card.defense)
         -1000 -1000
         """
-        "*** YOUR CODE HERE ***"
         re_add = False
+        self.attack -= 1000
+        self.defense -= 1000
+        if self.attack >= 0 or self.defense >= 0:
+            player.hand.append(self)
+            re_add = True
         # You should add your implementation above this.
         if re_add:
             print(f"{self.name} returns to my hand!")
