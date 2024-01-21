@@ -22,7 +22,9 @@ class Card:
         >>> other_staff.defense
         500
         """
-        "*** YOUR CODE HERE ***"
+        self.name = name
+        self.attack = attack
+        self.defense = defense
 
     def power(self, opponent_card):
         """
@@ -40,7 +42,7 @@ class Card:
         >>> third_card.power(staff_member)
         -100
         """
-        "*** YOUR CODE HERE ***"
+        return self.attack - opponent_card.defense
 
 
     def effect(self, opponent_card, player, opponent):
