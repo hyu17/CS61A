@@ -147,18 +147,13 @@ def two_list(vals, counts):
     >>> c
     Link(1, Link(1, Link(3, Link(3, Link(2)))))
     """
-    result = Link.empty
-    p = Link.empty
-    for index in range(len(vals)):
-        item = vals[index]
-        for _ in range(counts[index]):
-            if result == Link.empty:
-                result = Link(item)
-                p = result
-            else:
-                p.rest = Link(item)
-                p = p.rest
-    return result
+    def helper(count, index):
+        if count == 0:
+            if index + 1 == len(vals):
+                return Link.empty
+            return Link(vals[index + 1], helper(counts[index + 1] - 1, index + 1))
+        return Link(vals[index], helper(count - 1, index))
+    return helper(counts[0], 0)
 
 class Link:
     """A linked list.
