@@ -17,7 +17,13 @@ def duplicate_link(link, val):
     >>> z
     Link(1, Link(2, Link(2, Link(2, Link(2, Link(3))))))
     """
-    "*** YOUR CODE HERE ***"
+    if link == Link.empty:
+        return
+    elif link.first != val:
+        duplicate_link(link.rest, val)
+    else:
+        link.rest = Link(link.first, link.rest)
+        duplicate_link(link.rest.rest, val)
 
 
 def convert_link(link):
