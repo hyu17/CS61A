@@ -35,11 +35,13 @@ def convert_link(link):
     >>> convert_link(Link.empty)
     []
     """
-    lst = []
-    while link is not Link.empty:
-        lst.append(link.first)
-        link = link.rest
-    return lst
+    if link == Link.empty:
+        return []
+    if type(link.first) == Link:
+        return convert_link(link.first) + convert_link(link.rest)
+    else:
+        return [link.first] + convert_link(link.rest)
+        
 
 
 def multiply_lnks(lst_of_lnks):
