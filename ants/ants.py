@@ -133,7 +133,15 @@ class Ant(Insect):
             place.ant = self
         else:
             # BEGIN Problem 8b
-            assert place.ant is None, 'Two ants in {0}'.format(place)
+            if isinstance(place.ant, ContainerAnt) and place.ant.can_contain(self):
+                place.ant.ant_contained = self
+                self.place = place
+            elif isinstance(self, ContainerAnt) and self.can_contain(place.ant):
+                self.ant_contained = place.ant
+                place.ant = self
+                self.place = place
+            else:
+                assert place.ant is None, 'Two ants in {0}'.format(place)
             # END Problem 8b
         Insect.add_to(self, place)
 
