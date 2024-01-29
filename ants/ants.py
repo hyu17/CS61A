@@ -107,6 +107,7 @@ class Ant(Insect):
     food_cost = 0
     is_container = False
     # ADD CLASS ATTRIBUTES HERE
+    is_doubled = False
 
     def __init__(self, health=1):
         """Create an Insect with a HEALTH quantity."""
@@ -158,7 +159,9 @@ class Ant(Insect):
     def double(self):
         """Double this ants's damage, if it has not already been doubled."""
         # BEGIN Problem 12
-        "*** YOUR CODE HERE ***"
+        if not self.is_doubled and self.damage != 0:
+            self.damage *= 2
+            self.is_doubled = True
         # END Problem 12
 
 
@@ -426,15 +429,19 @@ class ScubaThrower(ThrowerAnt):
 # END Problem 11
 
 # BEGIN Problem 12
-class QueenAnt(Ant):  # You should change this line
+class QueenAnt(ScubaThrower):  # You should change this line
 # END Problem 12
     """QueenAnt is a ScubaThrower that boosts the damage of all ants behind her."""
 
     name = 'Queen'
     food_cost = 7
     # OVERRIDE CLASS ATTRIBUTES HERE
+    is_waterproof = True   
     # BEGIN Problem 12
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
+    
+    def __init__(self, health=1):
+        super().__init__(health)
     # END Problem 12
 
     def action(self, gamestate):
@@ -442,7 +449,14 @@ class QueenAnt(Ant):  # You should change this line
         in her tunnel.
         """
         # BEGIN Problem 12
-        "*** YOUR CODE HERE ***"
+        super().action(gamestate)
+        curr_exit = self.place.exit
+        while curr_exit:
+            if curr_exit.ant:
+                curr_exit.ant.double()
+                if curr_exit.ant.is_container and curr_exit.ant.ant_contained:
+                    curr_exit.ant.ant_contained.double()
+            curr_exit = curr_exit.exit
         # END Problem 12
 
     def reduce_health(self, amount):
@@ -450,12 +464,16 @@ class QueenAnt(Ant):  # You should change this line
         remaining, signal the end of the game.
         """
         # BEGIN Problem 12
-        "*** YOUR CODE HERE ***"
+        if self.health > amount:
+            super().reduce_health(amount)   
+        else:
+            ants_lose()
         # END Problem 12
 
     def remove_from(self, place):
         # BEGIN Problem 12
-        "*** YOUR CODE HERE ***"
+        """A queen cannot be removed. Attempts to remove a queen should have no effects."""
+        return None
         # END Problem 12
 
 
