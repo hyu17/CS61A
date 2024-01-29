@@ -133,10 +133,10 @@ class Ant(Insect):
             place.ant = self
         else:
             # BEGIN Problem 8b
-            if isinstance(place.ant, ContainerAnt) and place.ant.can_contain(self):
+            if place.ant.is_container and place.ant.can_contain(self):
                 place.ant.ant_contained = self
                 self.place = place
-            elif isinstance(self, ContainerAnt) and self.can_contain(place.ant):
+            elif self.is_container and self.can_contain(place.ant):
                 self.ant_contained = place.ant
                 place.ant = self
                 self.place = place
