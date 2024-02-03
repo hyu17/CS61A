@@ -14,11 +14,9 @@
 )
 
 (define (repeat f n)
-  (define (apply x)
-    (if (> n 0)
-      ((repeat f (- n 1)) (f x))
-      x))
-  apply
+  (if (< n 1)
+    (lambda (x) x)
+    (composed f (repeat f (- n 1))))
 )
 
 (define (max a b)
