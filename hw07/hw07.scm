@@ -11,7 +11,8 @@
 (define (repeatedly-cube n x)
   (if (zero? n)
       x
-      (let (_________________)
+      (let (
+        (y (repeatedly-cube (- n 1) x)))
         (* y y y))))
 
 (define (cddr s) (cdr (cdr s)))
