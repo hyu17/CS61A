@@ -29,4 +29,13 @@
       b
       a))
 
-(define (gcd a b) 'YOUR-CODE-HERE)
+(define (gcd a b)
+  (let (
+      (smaller_value (min a b))
+      (larger_value (max a b))
+       )
+    (if (zero? (modulo larger_value smaller_value))
+      smaller_value
+      (gcd smaller_value (modulo larger_value smaller_value)))
+  )
+)
