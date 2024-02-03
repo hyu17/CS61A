@@ -13,7 +13,13 @@
   (lambda (x) (f (g x)))
 )
 
-(define (repeat f n) 'YOUR-CODE-HERE)
+(define (repeat f n)
+  (define (apply x)
+    (if (> n 0)
+      ((repeat f (- n 1)) (f x))
+      x))
+  apply
+)
 
 (define (max a b)
   (if (> a b)
