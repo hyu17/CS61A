@@ -81,6 +81,13 @@ def eval_and(expressions):
     True
     """
     # BEGIN SOLUTION Q3
+    curr, result = expressions, True
+    while curr != nil:
+        result = calc_eval(curr.first)
+        if result is scheme_f:
+            return scheme_f
+        curr = curr.rest
+    return result
 
 bindings = {}
 
