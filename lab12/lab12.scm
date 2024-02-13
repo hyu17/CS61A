@@ -1,7 +1,9 @@
 (define (if-program condition if-true if-false)
   `(if ,condition ,if-true ,if-false))
 
-(define (pow-expr n p) 'YOUR-CODE-HERE)
+(define (pow-expr n p)
+  (if (= p 0) 1
+               `(* ,(pow-expr n (- p 1)) ,n)))
 
 (define (cddr s) (cdr (cdr s)))
 
