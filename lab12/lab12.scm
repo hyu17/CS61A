@@ -16,4 +16,6 @@
         (first (car (cdr expr)))
         (second (caddr expr))
         (rest (cdr (cddr expr))))
-    'YOUR-CODE-HERE))
+    (if (> (eval second) (eval first))
+        (cons op (cons second (cons first rest)))
+        expr)))
