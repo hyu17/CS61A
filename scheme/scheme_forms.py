@@ -176,9 +176,15 @@ def do_cond_form(expressions, env):
             test = scheme_eval(clause.first, env)
         if is_scheme_true(test):
             # BEGIN PROBLEM 13
-            "*** YOUR CODE HERE ***"
+            # if the true predicate does not have a corresponding result sub-expression, return the predicate value
+            # or if the true predicate has a multiple sub-expression, evaluate them all.
+            if clause.rest is nil:
+                return test
+            return eval_all(clause.rest, env)
             # END PROBLEM 13
         expressions = expressions.rest
+    # if there is no true predicate and no else, return None
+    return None
 
 def do_let_form(expressions, env):
     """Evaluate a let form.
